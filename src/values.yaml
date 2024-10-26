@@ -1,0 +1,34 @@
+annotations:
+  group: fun.freechat
+cert:
+  manager:
+    namespace: cert-manager
+    version: v1.16.1
+  clusterIssuer:
+    enabled: false
+  email: dev.freechat.fun@gmail.com
+ingress:
+  annotations:
+    cert-manager.io/cluster-issuer: freechat-ollama-letsencrypt-http01
+  className: nginx
+  enabled: false
+  hosts:
+    - host: ollama.freechat.fun
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - hosts:
+      - ollama.freechat.fun
+      secretName: freechat-ollama-tls
+replicaCount: 1
+serviceAccount:
+  create: true
+  automount: false
+ollama:
+  gpu:
+    enabled: true
+    type: 'nvidia'
+    number: 1
+  models: 
+    - qwen2.5:7b

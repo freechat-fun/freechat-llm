@@ -1,0 +1,11 @@
+annotations:
+  licenses: Apache-2.0
+appVersion: '0.1.0'
+description: A Helm chart for trojan
+maintainers:
+  - email: dev.freechat.fun@gmail.com
+    name: dev.freechat.fun
+    url: https://github.com/freechat-fun/freechat-ollama
+name: freechat-ollama
+type: application
+version: 0.1.0
