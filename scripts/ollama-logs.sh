@@ -2,9 +2,19 @@
 
 source $(dirname ${BASH_SOURCE[0]})/setenv.sh
 
-pod=$(kubectl get pods -o name --kubeconfig ${KUBE_CONFIG} --namespace ${NAMESPACE} \
-  | awk -F'/' '{print $2}'| grep "${PROJECT_NAME}" | head -1)
+# find deploying one
+pod=$(kubectl get pods --kubeconfig ${KUBE_CONFIG} --namespace ${NAMESPACE} \
+  | grep "${PROJECT_NAME}" | grep "1/2" | awk -F' ' '{print $1}' | head -1)
 
-test -n "${pod}" || die "ERROR: Failed to find ollama pod!"
+if [[ -z "${pod}" ]]; then
+  # find anyone
+  pod=$(kubectl get pods --kubeconfig ${KUBE_CONFIG} --namespace ${NAMESPACE} \
+    | grep "${PROJECT_NAME}" | awk -F' ' '{print $1}' | head -1)
+fi
 
-kubectl logs --kubeconfig ${KUBE_CONFIG} --namespace ${NAMESPACE} ${pod}
+test -n "${pod}" || die "ERROR: Failed to find app pod!"
+
+echo "Found ${pod}"
+
+kubectl logs --kubeconfig ${KUBE_CONFIG} --namespace ${NAMESPACE} \
+  ${ARGS[*]} ${pod}
