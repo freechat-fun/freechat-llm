@@ -1,6 +1,6 @@
 annotations:
   licenses: Apache-2.0
-appVersion: '0.1.0'
+appVersion: latest
 description: A Helm chart for Ollama
 maintainers:
   - email: dev.freechat.fun@gmail.com
