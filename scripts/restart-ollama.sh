@@ -2,9 +2,8 @@
 
 source $(dirname ${BASH_SOURCE[0]})/setenv.sh
 
-check_helm
+check_kubectl
 
-helm template --kubeconfig ${KUBE_CONFIG} --create-namespace -f ${values_yaml} \
-  --namespace ${NAMESPACE} \
+kubectl rollout restart --kubeconfig ${KUBE_CONFIG} --namespace ${NAMESPACE} \
   ${ARGS[*]} \
-  ${PROJECT_NAME} ollama-helm/ollama
+  deployment ${PROJECT_NAME}
