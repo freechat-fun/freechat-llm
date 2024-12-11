@@ -5,7 +5,7 @@ description: A Helm chart for Ollama
 maintainers:
   - email: dev.freechat.fun@gmail.com
     name: dev.freechat.fun
-    url: https://github.com/freechat-fun/freechat-ollama
-name: freechat-ollama
+    url: https://github.com/freechat-fun/freechat-llm
+name: freechat-llm
 type: application
-version: 0.1.0
+version: 0.2.0

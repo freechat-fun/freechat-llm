@@ -2,9 +2,7 @@
 
 PROJECT_PATH=$(cd $(dirname ${BASH_SOURCE[0]})/..; pwd)
 PROJECT_NAME=${PROJECT_PATH##*/}
-
 HELM_CONFIG_HOME=${PROJECT_PATH}/src
-
 KUBE_CONFIG=${HELM_CONFIG_HOME}/kube-private.conf
 HELM_CONFIG=${HELM_CONFIG_HOME}/values-private.yaml
 NAMESPACE=

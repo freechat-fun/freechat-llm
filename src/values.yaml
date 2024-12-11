@@ -6,18 +6,20 @@ cert:
     version: v1.16.1
 ingress:
   annotations:
-    cert-manager.io/cluster-issuer: freechat-ollama-letsencrypt-http01
+    cert-manager.io/cluster-issuer: freechat-llm-letsencrypt-http01
   className: nginx
   enabled: false
   hosts:
-    - host: ollama.freechat.fun
+    - host: llm.freechat.fun
       paths:
         - path: /
           pathType: Prefix
   tls:
     - hosts:
-      - ollama.freechat.fun
-      secretName: freechat-ollama-tls
+      - llm.freechat.fun
+      secretName: freechat-llm-tls
+podSecurityContext:
+  fsGroup: 10000
 replicaCount: 1
 serviceAccount:
   create: true
@@ -27,5 +29,3 @@ ollama:
     enabled: true
     type: 'nvidia'
     number: 1
-  models: 
-    - qwen2.5:7b
