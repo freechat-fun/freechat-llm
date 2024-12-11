@@ -6,4 +6,4 @@ check_kubectl
 
 kubectl rollout restart --kubeconfig ${KUBE_CONFIG} --namespace ${NAMESPACE} \
   ${ARGS[*]} \
-  deployment ${PROJECT_NAME}
+  deployment ${PROJECT_NAME}-ollama
