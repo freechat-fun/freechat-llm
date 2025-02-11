@@ -18,6 +18,10 @@ ingress:
     - hosts:
       - llm.freechat.fun
       secretName: freechat-llm-tls
+persistentVolume:
+  enabled: true
+  annotations:
+    helm.sh/resource-policy: keep
 podSecurityContext:
   fsGroup: 10000
 replicaCount: 1
